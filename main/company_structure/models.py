@@ -13,7 +13,7 @@ class TimeCheckModel(models.Model):
 
 
 class Company(TimeCheckModel):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique = True)
     description = models.TextField(max_length=500)
 
 
@@ -33,13 +33,13 @@ class Office(TimeCheckModel):
         verbose_name = 'Office'
         verbose_name_plural = 'Offices'
 
-    
+    def get_company(self):
+        return self.company
 
 class Team(TimeCheckModel):
     name = models.CharField(max_length=100)
     company = models.ForeignKey('company_structure.Company', on_delete=models.CASCADE)
     office = models.ForeignKey('company_structure.Office', on_delete=models.SET_DEFAULT, default=1, blank = True, null = True)
-
 
 
     class Meta:
