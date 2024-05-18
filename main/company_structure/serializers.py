@@ -10,15 +10,19 @@ class CompanySerializer(serializers.ModelSerializer):
 
 
 class OfficeSerializer(serializers.ModelSerializer):
-
-
+    
     class Meta:
         fields = '__all__'
         model = Office
-        read_only_fields = ('created', 'updated', 'company')
+        read_only_fields = ('created', 'updated')
 
-    def save(self, **kwargs):
-        company = self.context['request'].user.company
-        return Office.objects.create(company=company, **self.validated_data)
+    # def save(self, **kwargs):
+    #     company = self.context['request'].user.company
+    #     return Office.objects.create(company=company, **self.validated_data)
 
 
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = '__all__'
+        model = Team
+        read_only_fields = ('created', 'updated')

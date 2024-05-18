@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% comment %} <h1 style="text-align: center;" margin="50px">Add office</h1> {% endcomment %}
+{% comment %} <form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit">
+</form> {% endcomment %}
+
+
+<section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <div class="heading_container">
+              <h2>
+                Create New Office in your Company!
+              </h2>
+            </div>
+            <form action = "" method="POST" class = 'form'>
+              {% csrf_token %}
+              <div>
+                {{ OfficeCreationForm.company }}<input type="text" placeholder="Enter Company Id">    
+              </div>
+              <div>
+                {{ OfficeCreationForm.name }}<input type="text" placeholder="Enter Office Name">
+              </div>
+              <div class="btn_box" type = "submit">
+                <button>
+                    Create
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+ 
+{% endblock %}
